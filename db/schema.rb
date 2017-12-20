@@ -11,6 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220051235) do
+ActiveRecord::Schema.define(version: 20171220182858) do
 
 end

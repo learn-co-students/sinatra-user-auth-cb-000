@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
   set :views, Proc.new { File.join(root, "../views/") }
 
   configure do
+    set :database, 'sqlite3:db/users.db'
     enable :sessions
     set :session_secret, "secret"
   end
@@ -18,7 +19,8 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
-
+    puts @user = User.new(name: params["name"], email: params["email"], password: params["password"])
+    @user.save
     redirect '/users/home'
   end
 
