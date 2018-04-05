@@ -1,3 +1,5 @@
+require_relative '../../config/environment'
+
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
   set :views, Proc.new { File.join(root, "../views/") }
@@ -16,28 +18,32 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/registrations' do
-    @user =  User.create( name: params[:name], email: params[:email], password: params[:password])
-    @user.save
-    session[:id] = @user.id
+    @user = User.create(name: params[:name], email: params[:email], password: params[:password])
+    session[:user] = @user
+
     redirect '/users/home'
   end
 
   get '/sessions/login' do
-    erb :'sessions/login'
+     erb :'sessions/login'
   end
 
   post '/sessions' do
-
-    redirect '/users/home'
+    @user = User.find_by(email: params[:email], password: params[:password])
+    if  session[:user] = User.find_by(email: params[:email], password: params[:password])
+      redirect '/users/home'
+    end
+    redirect '/sessions/login'
   end
 
   get '/sessions/logout' do 
+    session.clear
 
     redirect '/'
   end
 
   get '/users/home' do
-    #@user=User.new(name: "ben", email: "ben@home", password: "pass")
+    @user = session[:user]
     erb :'/users/home'
   end
 
