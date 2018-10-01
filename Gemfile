@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 gem 'sinatra'
 # fix problem with undefined method 'needs_migration'
-gem 'activerecord', '~> 4.2', '>= 4.2.2'
+gem 'activerecord', '4.2', :require => 'active_record'
 #gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'rake'
