@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by(email: params[:email], password: params[:password])
 
     if @user == nil
-      redirect '/unknown'
+      redirect '/sessions/login'
     else
       session[:id] = @user.id
       redirect '/users/home'
@@ -50,7 +50,6 @@ class ApplicationController < Sinatra::Base
 
   # Our logout session sends the user back to the homepage
   get '/sessions/logout' do
-    session[:id].clear
     redirect '/'
   end
 
