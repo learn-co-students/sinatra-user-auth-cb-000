@@ -39,7 +39,7 @@ describe "User sign up, log in, sign out" do
     end
 
     it 'fails to log in with an incorrect password' do
-      expect(current_path).to eq('/sessions/login')
+    expect(current_path).to eq('/sessions/login')
       fill_in("email", :with => valid_user.email)
       fill_in("password", :with => "wrong")
       click_button('Log In')
