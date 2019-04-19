@@ -1,4 +1,4 @@
-# User Authentication in Sinatra
+ # User Authentication in Sinatra
 
 ## Overview
 
