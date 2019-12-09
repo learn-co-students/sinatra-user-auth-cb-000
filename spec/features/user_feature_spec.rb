@@ -55,7 +55,7 @@ describe "User sign up, log in, sign out" do
       fill_in("password", :with => valid_user.password)
       click_button('Log In')
       click_link('Log Out')
-      expect(current_path).to eq('/')
+      expect(current_path).to eq('/sessions/login')
       expect(page).to have_content('Log In')
     end
   end
